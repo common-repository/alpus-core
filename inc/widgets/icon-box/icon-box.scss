@@ -1,0 +1,381 @@
+/* -------------------------------------------
+    Icon Box
+     - Icon Box Style
+     - Icon Box Side
+     - Icon Box Feature
+     - Icon Box Shadow
+     - Icon View
+     - Icon Aniamtion
+     - Compatiblity with Elementor
+---------------------------------------------- */
+
+@import '../../../assets/sass/config';
+@import '../../../assets/sass/direction';
+@import '../../../assets/sass/mixins';
+
+.icon-box {
+    --alpus-icon-primary: var(--alpus-dark-color);
+    --alpus-icon-primary-hover: var(--alpus-dark-color-hover);
+    --alpus-icon-secondary: #fff;
+    --alpus-icon-secondary-hover: #fff;
+    --alpus-icon-spacing: 2.4rem;
+
+    text-align: center;
+    transition: border-color .3s, background-color .3s;
+
+    >a.link {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .icon-box-title,
+    .icon-box-desc {
+        transition: color .3s;
+    }
+
+    .icon-box-title {
+        margin: 0 0 .7rem;
+        text-transform: capitalize;
+        font-size: 1.8rem;
+        line-height: 1.6;
+
+        a {
+            color: inherit;
+
+            &:hover {
+                color: var(--alpus-primary-color);
+            }
+        }
+    }
+
+    p {
+        margin: 0;
+    }
+
+    i::before {
+        margin: 0;
+    }
+
+    &.shape-circle .icon-box-feature {
+        border-radius: 50%;
+    }
+
+    .icon-box-feature svg {
+        transition: .3s;
+    }
+
+    .icon-box-title a,
+    .btn {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+// Icon Box Side
+.icon-box-side {
+    display: flex;
+    align-items: center;
+
+    &.position-right .icon-box-content {
+        order: -1;
+    }
+
+    @include mq(lg, 'max') {
+        .slider-wrapper & {
+            justify-content: center;
+        }
+    }
+}
+
+// Icon Box Feature
+.icon-box-feature {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: var(--alpus-primary-color);
+    font-size: 6rem;
+    transition: color .3s, background-color .3s;
+
+    img {
+        border-radius: inherit;
+    }
+}
+
+// Icon Box Shadow
+.icon-box-icon-shadow .icon-box-feature {
+    background-color: var(--alpus-change-color-light-1);
+    box-shadow: 0px 5px 40px rgba(0, 0, 0, .05);
+    transition: box-shadow .3s;
+}
+
+.icon-box-shadow:hover {
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, .1);
+}
+
+// Icon View
+.icon-stacked .icon-box-feature {
+    color: var(--alpus-change-color-light-1);
+    background-color: var(--alpus-primary-color);
+}
+
+.icon-framed .icon-box-feature {
+    color: var(--alpus-primary-color);
+    border: 5px solid;
+}
+
+// Animations
+.hover-overlay .icon-box-feature:after {
+    background-image: url(../../../assets/images/icon-alt.svg);
+    background-position: center;
+    background-size: cover;
+}
+
+.hover-stacked {
+    .icon-box-feature {
+        transition: background-color .3s;
+    }
+
+    .icon-box-feature:after {
+        content: '';
+        position: absolute;
+        top: -3px;
+        left: -3px;
+        right: -3px;
+        bottom: -3px;
+        padding: 3px;
+        border-radius: inherit;
+        box-shadow: 0 0 0 2px var(--alpus-primary-color);
+        transition: transform .3s, opacity .3s, box-shadow .3s;
+        transform: scale(.8);
+        opacity: 0;
+    }
+
+    &:hover .icon-box-feature {
+        background-color: var(--alpus-primary-color);
+
+        &:after {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+}
+
+.hover-framed {
+    .icon-box-feature {
+
+        i,
+        svg {
+            z-index: 1;
+        }
+
+        transition: color .3s;
+    }
+
+    .icon-box-feature:after {
+        content: '';
+        position: absolute;
+        top: -2px;
+        bottom: -2px;
+        left: -2px;
+        right: -2px;
+        padding: 2px;
+        z-index: 0;
+        transform: scale(1.3);
+        opacity: 0;
+        border-radius: inherit;
+        background-color: var(--alpus-primary-color);
+        transition: transform 0.5s, opacity 0.5s, background-color 0.5s;
+    }
+
+    &:hover .icon-box-feature {
+        color: var(--alpus-change-color-light-1);
+
+        &:after {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+}
+
+.icon-box.rotate {
+    .icon-box-feature {
+        transition: .3s;
+    }
+
+    &:hover .icon-box-feature {
+        transform: rotate(10deg);
+    }
+}
+
+.icon-box.float {
+    .icon-box-feature {
+        transition: .3s;
+    }
+
+    &:hover .icon-box-feature {
+        transform: translateY(-10px);
+    }
+}
+
+.icon-box.grow {
+    .icon-box-feature {
+        transition: .3s;
+    }
+
+    &:hover .icon-box-feature {
+        transform: scale(1.1);
+    }
+}
+
+.icon-box-icon {
+    display: inline-block;
+    margin-bottom: 2.4rem;
+    font-size: 3.5rem;
+    font-weight: 600;
+    line-height: 0;
+    color: var(--alpus-dark-color, #323334);
+}
+
+// Compatibility with Elementor
+.elementor-widget-alpus_widget_iconbox .elementor-widget-container {
+    position: relative;
+}
+
+// Compatibility with Type builder
+.alpus-tb-item {
+    .icon-box {
+        .icon-box-content {
+            text-align: center;
+        }
+    }
+
+    .icon-box-icon {
+        margin-bottom: var(--alpus-icon-spacing);
+
+        i {
+            color: var(--alpus-icon-primary);
+        }
+
+        &:hover i {
+            color: var(--alpus-icon-primary-hover);
+        }
+
+        i {
+            position: relative;
+            width: 1em;
+            height: 1em;
+
+            &:before {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        svg {
+            height: 3.4rem;
+            width: 4.8rem;
+        }
+    }
+
+    .icon-circle .icon-box-icon {
+        border-radius: 50%;
+    }
+
+    .icon-border {
+        .icon-box-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: .5em;
+            background-color: var(--alpus-icon-secondary);
+            border: 1px solid;
+
+            &:hover {
+                background-color: var(--alpus-icon-secondary-hover);
+            }
+        }
+
+        svg {
+            height: 2.4rem;
+        }
+    }
+
+    .icon-inversed {
+        .icon-box-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: .5em;
+            background-color: var(--alpus-icon-primary);
+
+            i {
+                color: var(--alpus-icon-secondary);
+            }
+
+            &:hover {
+                background-color: var(--alpus-icon-primary-hover);
+
+                i {
+                    color: var(--alpus-icon-secondary-hover);
+                }
+            }
+        }
+
+        svg {
+            height: 2.4rem;
+            fill: white;
+        }
+    }
+
+    @include mq('md') {
+        .icon-box-side {
+            display: flex;
+            justify-self: flex-start;
+
+            .icon-box-icon {
+                margin-#{$right}: var(--alpus-icon-spacing);
+                margin-bottom: 0;
+            }
+
+            .icon-box-content {
+                flex-grow: 1;
+                text-align: #{$left};
+
+                &+.icon-box-icon {
+                    margin-#{$left}: var(--alpus-icon-spacing);
+                    margin-#{$right}: 0;
+                }
+            }
+
+            .icon-box-title {
+                margin: 0;
+            }
+
+            &.right {
+                flex-direction: row-reverse;
+                justify-content: flex-end;
+                text-align: right;
+
+                .icon-box-icon {
+                    margin-#{$left}: var(--alpus-icon-spacing);
+                    margin-#{$right}: 0;
+                }
+
+                .icon-box-content {
+                    text-align: #{$right};
+
+                    &+.icon-box-icon {
+                        margin-#{$right}: var(--alpus-icon-spacing);
+                        margin-#{$left}: 0;
+                    }
+                }
+            }
+        }
+    }
+}

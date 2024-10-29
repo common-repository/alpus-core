@@ -1,0 +1,1 @@
+window.theme=window.theme||{},function(e){theme.alpusgutenbergimagepopup=function(i){e("body").on("click",i,(function(i){i.preventDefault(),e.magnificPopup&&e.magnificPopup.open({items:{src:e(this).find("img").attr("src")},type:"image",mainClass:"mfp-with-zoom"})}))},e(window).on("alpus_complete",(function(){theme.alpusgutenbergimagepopup(".alpus_img_popup")}))}(jQuery);

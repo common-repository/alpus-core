@@ -1,0 +1,79 @@
+@import '../../../../assets/sass/config';
+@import '../../../../assets/sass/direction';
+
+/*
+ * *************************************** 
+ * Elementor Admin Extend Scss
+ *
+ * **************************************
+ */
+.elementor-control .alpus-pro-notice {
+    padding: 20px;
+    background-color: #f2fbff;
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: center;
+    color: inherit;
+}
+
+.elementor-control select option.disabled {
+    background: #f0f0f0;
+}
+
+.elementor-panel .elementor-element>.eicon-lock {
+    #{$left}: 5px;
+    #{$right}: auto;
+    color: var(--alpus-change-color-light-3);
+}
+
+.elementor-element .alpus-elementor-widget-icon:after {
+    content: '';
+    background-image: url(../../../../assets/images/mini-logo-sm-grey.png);
+    background-repeat: no-repeat;
+    background-position: 50% 45%;
+    background-size: 14px;
+}
+
+.elementor-panel-heading-title.elementor-section-title .alpus-elementor-widget-icon:after {
+    content: '';
+    #{$right}: -30px;
+    width: 22px;
+    height: 22px;
+    background-image: url(../../../../assets/images/mini-logo-sm.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 12px;
+}
+
+#elementor-element--promotion__dialog {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .12);
+    border-radius: 0;
+
+    .dialog-header {
+        padding: 28px 30px 18px;
+
+        .eicon-pro-icon {
+            color: #39b54a;
+        }
+    }
+
+    .dialog-message {
+        padding: 15px 30px 20px;
+    }
+
+    .dialog-buttons-wrapper {
+        padding: 0 30px 30px 30px;
+    }
+
+    .dialog-button {
+        font-family: var(--alpus-body-font-family);
+        font-weight: 400;
+        background-color: var(--alpus-editor-color-1);
+        padding: 11px;
+        width: 100%;
+    }
+}
+
+.elementor-control:not(.elementor-open) .elementor-panel-heading-toggle .eicon:before {
+    font-family: $theme-font;
+}

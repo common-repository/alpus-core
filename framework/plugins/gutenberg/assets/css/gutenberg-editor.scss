@@ -1,0 +1,1341 @@
+/**
+ * Gutengerg Editor Preview
+ *
+ *      1. Base Style
+ *      2. Gutenberg Heading Widget
+ *      3. Gutenberg Button Widget
+ *      4. Gutenberg Container Widget
+ *      5. Gutenberg Image Widget
+ *      6. Post Type Builder
+ *      7. Gutenberg Icon Widget
+ */
+
+@import '../../../../../assets/sass/config';
+@import '../../../../assets/sass/mixins/mixins';
+@import '../../../../assets/sass/mixins/direction';
+
+// 1. Base Style
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.4rem;
+}
+
+.spacer {
+    margin-bottom: 1.5rem;
+}
+
+.dashicons-alpus {
+    width: 24px;
+    height: 24px;
+    background-size: 24px;
+    background-position: center;
+    background-image: url(../../../../../assets/images/mini-logo.png);
+}
+
+.block-editor-block-navigation-leaf .block-editor-block-icon {
+    width: 24px;
+}
+
+.editor-styles-wrapper {
+    color: var(--alpus-body-color, #777);
+
+    body & {
+        font-family: var(--alpus-body-font-family), sans-serif;
+        font-size: 1.4rem;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--alpus-heading-font-family);
+        font-weight: var(--alpus-heading-font-weight);
+        line-height: var(--alpus-heading-line-height);
+        letter-spacing: var(--alpus-heading-letter-spacing);
+        text-transform: var(--alpus-heading-text-transform);
+        color: var(--alpus-heading-color);
+    }
+
+    h1 {
+        font-size: var(--alpus-heading-h1-font-size);
+    }
+
+    h2 {
+        font-size: var(--alpus-heading-h2-font-size);
+    }
+
+    h3 {
+        font-size: var(--alpus-heading-h3-font-size);
+    }
+
+    h4 {
+        font-size: var(--alpus-heading-h4-font-size);
+    }
+
+    h5 {
+        font-size: var(--alpus-heading-h5-font-size);
+    }
+
+    h6 {
+        font-size: var(--alpus-heading-h6-font-size);
+    }
+
+    a {
+        color: var(--alpus-link-color);
+    }
+}
+
+.edit-post-visual-editor__post-title-wrapper .editor-post-title {
+    margin-bottom: 2em;
+    border-bottom: 1px solid var(--alpus-change-border-color);
+}
+
+// Responsive Display Classes
+@media (min-width: 1200px) {
+    .hide-on-xl {
+        display: none !important;
+    }
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+    .hide-on-lg {
+        display: none !important;
+    }
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+    .hide-on-md {
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .hide-on-sm {
+        display: none !important;
+    }
+}
+
+@media (max-width: 575px) {
+    .hide-on-xs {
+        display: none !important;
+    }
+}
+
+// Default panel styles
+.icon-library {
+    margin-bottom: 2.4rem;
+}
+
+h3.component-title {
+    margin-top: 2rem;
+}
+
+.block-editor-block-card .block-editor-block-card__content {
+    margin-bottom: 0;
+
+    .block-editor-block-card__title {
+        margin-bottom: 0;
+    }
+}
+
+.components-font-size-picker .components-font-size-picker__controls .components-unit-control-wrapper {
+    margin-bottom: 0;
+}
+
+.components-panel .components-flex {
+    height: auto;
+}
+
+.alpus-ajaxselect2 select {
+    width: 100%
+}
+
+.components-base-control,
+.components-unit-control-wrapper,
+.components-base-control+h3,
+.components-base-control+p,
+.components-panel__body+p,
+.components-panel__body+h3 {
+    padding-left: 15px;
+    padding-right: 15px;
+    word-break: break-word;
+}
+
+.components-panel__body {
+
+    .components-base-control,
+    .components-unit-control-wrapper,
+    .components-base-control+p,
+    .components-base-control+h3 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .components-unit-control-wrapper {
+        margin-bottom: 2.4rem;
+    }
+}
+
+.components-base-control .css-pezhm9-StyledLabel {
+    margin-bottom: .4rem;
+}
+
+.alpus-typography-control {
+    border: 1px solid #e1e1e1;
+    margin: 1rem 1rem 1.5rem;
+
+    >h3 {
+        padding-left: 0;
+        padding-right: 0;
+        margin-top: -1.1rem;
+        width: fit-content;
+        background: var(--alpus-white-color);
+        margin-#{$left}: 1.5rem;
+    }
+
+    .components-panel__body & {
+        padding: 0 1rem 1rem;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.alpus-dimension-control {
+    display: flex;
+    flex-wrap: wrap;
+
+    >div {
+        width: 100%;
+        flex: 0 0 auto;
+    }
+
+    .components-unit-control-wrapper {
+        flex: 1;
+        padding: 0 2px;
+
+        .components-input-control__label {
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+    }
+
+    .components-base-control {
+        margin-bottom: 1rem;
+    }
+
+    .components-color-picker__body {
+        padding: 1.6rem 0 1.2rem .3rem;
+    }
+
+    .components-color-picker__inputs-wrapper {
+        min-width: auto;
+    }
+}
+
+.alpus-color-show {
+    display: inline-block;
+    vertical-align: middle;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+// 2. Gutenberg Heading Widget
+.divider {
+    display: inline-block;
+    vertical-align: middle;
+    height: 2.5rem;
+    width: .1rem;
+    margin: 0 1.5rem;
+    background-color: var(--alpus-light-color);
+}
+
+.title-wrapper {
+    display: flex;
+    align-items: center;
+
+    .link {
+        display: inline-flex;
+        align-items: center;
+        color: var(--alpus-dark-color);
+
+        &:hover {
+            color: var(--alpus-primary-color);
+        }
+    }
+
+    .divider {
+        margin: 0 1.5rem;
+    }
+
+    svg {
+        width: var(--alpus-heading-icon-size);
+        height: inherit;
+    }
+
+    .title {
+        width: 100%;
+        margin: 0;
+        border-width: inherit;
+    }
+}
+
+.title {
+    margin-bottom: 0;
+    max-width: 100%;
+
+    &::before,
+    &::after {
+        height: 2px;
+        background: #edeef0;
+    }
+}
+
+.title-left .title {
+    margin-#{$right}: auto;
+    text-align: left;
+}
+
+.title-right .title {
+    margin-#{$left}: auto;
+    text-align: right;
+}
+
+.title-center .title {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.rtl .title-left .#{$theme-icon-prefix}-icon-long-arrow-right:before {
+    content: "\e92b";
+}
+
+.link-left {
+    .title {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    &.title-left {
+        justify-content: if-ltr(flex-start, flex-end);
+        text-align: left;
+    }
+
+    &.title-center {
+        justify-content: center;
+    }
+
+    &.title-right {
+        justify-content: if-ltr(flex-end, flex-start);
+        text-align: right;
+    }
+}
+
+// Title Cross
+.title-cross {
+    .title {
+        display: flex;
+        position: relative;
+        align-items: center;
+        flex: 1;
+
+        &::before {
+            margin-#{$right}: 3rem;
+        }
+
+        &::after {
+            margin-#{$left}: 3rem;
+        }
+
+        &::before,
+        &::after {
+            flex: 1;
+            content: '';
+        }
+    }
+
+    &.title-left .title::before,
+    &.title-right .title::after {
+        content: none
+    }
+}
+
+// Underline
+.title-underline {
+    position: relative;
+    text-align: $left;
+
+    &:after {
+        content: '';
+        margin: 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        height: 1px;
+        background: #edeef0;
+    }
+
+    .title {
+        display: inline-block;
+        flex: 0 0 auto;
+        position: relative;
+        z-index: 2;
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            bottom: 0;
+            background: var(--alpus-primary-color);
+        }
+    }
+}
+
+// Extra Fixed Titles
+.title-underline2 {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--alpus-change-border-color);
+
+    .title {
+        font-weight: 700;
+        font-size: 2rem;
+    }
+
+    .btn-link {
+        padding: .5rem 0;
+    }
+}
+
+@include mq(sm, max) {
+    .title-wrapper {
+        flex-wrap: wrap;
+    }
+}
+
+// 3. Gutenberg Button Widget
+.btn {
+    display: inline-block;
+    border: 2px solid #eee;
+    background-color: #eee;
+    color: var(--alpus-dark-color);
+    width: auto;
+    outline: 0;
+    border-radius: 0;
+    padding: .9em 2em;
+    font-weight: 600;
+    font-size: 1em;
+    line-height: 1;
+    text-transform: uppercase;
+    text-align: center;
+    transition: color .3s, border-color .3s, background-color .3s, box-shadow .3s;
+    white-space: nowrap;
+    cursor: pointer;
+
+    i,
+    svg {
+        display: inline-block;
+        margin-#{$left}: .5em;
+        vertical-align: -0.1em;
+    }
+
+    svg {
+        width: 1em;
+        vertical-align: middle;
+    }
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.btn-xl {
+    font-size: 1.4em;
+}
+
+.btn-lg {
+    font-size: 1.2em;
+}
+
+.btn-md {
+    font-size: .9em;
+}
+
+.btn-sm {
+    font-size: .8em;
+}
+
+.btn-border-thin {
+    border-width: 1px;
+}
+
+.btn-rounded {
+
+    &,
+    &::before,
+    &::after {
+        border-radius: var(--alpus-border-radius-form);
+    }
+}
+
+.btn-ellipse {
+
+    &,
+    &::before,
+    &::after {
+        border-radius: 7em;
+    }
+}
+
+.btn-circle {
+
+    &,
+    &::before,
+    &::after {
+        border-radius: 50%;
+    }
+}
+
+// Outline Button
+.btn-outline {
+    border: 2px solid #eee;
+    color: var(--alpus-body-color);
+    background-color: transparent;
+
+    &:hover,
+    &:active,
+    &:focus {
+        border-color: var(--alpus-body-color);
+        background-color: var(--alpus-body-color);
+        color: var(--alpus-white-color);
+    }
+
+    &.btn-bg {
+        color: var(--alpus-white-color);
+    }
+}
+
+// Button Icon
+.btn-icon-left {
+
+    >i,
+    >svg {
+        margin-#{$right}: .5em;
+        margin-#{$left}: 0;
+    }
+}
+
+// Reveal Button
+.btn-reveal-left {
+
+    i,
+    svg {
+        opacity: 0;
+        margin-#{$left}: -1em;
+        transform: translateX(if-ltr(.5em, -.5em));
+        margin-#{$right}: 0;
+        transition: transform .3s, opacity .3s, margin .3s;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+
+        i,
+        svg {
+            opacity: 1;
+            margin-#{$left}: 0;
+            transform: translateX(0);
+            margin-#{$right}: .5em;
+        }
+    }
+}
+
+.btn-reveal-right {
+
+    i,
+    svg {
+        opacity: 0;
+        margin-#{$right}: -1em;
+        transform: translateX(if-ltr(-.5em, .5em));
+        margin-#{$left}: 0;
+        transition: transform .3s, opacity .3s, margin .3s;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+
+        i,
+        svg {
+            opacity: 1;
+            margin-#{$left}: .5em;
+            transform: translateX(0);
+            margin-#{$right}: 0;
+        }
+    }
+}
+
+// Slide Button
+@keyframes slideLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(if-ltr(-.5em, .5em));
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.btn-slide-left {
+
+    &:hover,
+    &:active,
+    &:focus {
+
+        i,
+        svg {
+            animation: .5s ease slideLeft;
+        }
+    }
+}
+
+@keyframes slideRight {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(if-ltr(.5em, -.5em));
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.btn-slide-right {
+
+    &:hover,
+    &:active,
+    &:focus {
+
+        i,
+        svg {
+            animation: .5s ease slideRight;
+        }
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-.5em);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.btn-slide-up {
+
+    &:hover,
+    &:active,
+    &:focus {
+
+        i,
+        svg {
+            animation: .5s ease slideUp;
+        }
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(.5em);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.btn-slide-down {
+
+    &:hover,
+    &:active,
+    &:focus {
+
+        i,
+        svg {
+            animation: .5s ease slideDown;
+        }
+    }
+}
+
+.btn-infinite {
+    &:hover {
+
+        i,
+        svg {
+            animation-iteration-count: infinite;
+        }
+    }
+}
+
+// Shadow Button
+.btn.btn-shadow-lg {
+    box-shadow: 0 13px 20px -10px rgba(0, 0, 0, .15);
+
+    &:hover,
+    &:active,
+    &:focus {
+        box-shadow: 0 13px 20px -10px rgba(0, 0, 0, .2);
+    }
+}
+
+.btn.btn-shadow {
+    box-shadow: 0 15px 20px -15px rgba(0, 0, 0, .15);
+
+    &:hover,
+    &:active,
+    &:focus {
+        box-shadow: 0 15px 20px -15px rgba(0, 0, 0, .2);
+    }
+}
+
+.btn.btn-shadow-sm {
+    box-shadow: 0 17px 20px -20px rgba(0, 0, 0, .15);
+
+    &:hover,
+    &:active,
+    &:focus {
+        box-shadow: 0 17px 20px -20px rgba(0, 0, 0, .2);
+    }
+}
+
+// Underline Button
+.btn-underline {
+
+    &:hover,
+    &.active,
+    &:focus {
+        &::after {
+            transform: scaleX(1);
+        }
+    }
+
+    &::after {
+        display: block;
+        margin-top: 3px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        height: 3px;
+        border-top: 1px solid;
+        border-bottom: 2px solid;
+        transform: scaleX(0);
+        transition: transform .3s;
+        content: '';
+    }
+}
+
+.btn-underline.sm::after {
+    width: 46%;
+}
+
+.btn-underline.lg::after {
+    margin-left: -16.5%;
+    margin-right: -16.5%;
+    width: 133%;
+}
+
+// Link Button
+.btn-link {
+    padding: 0;
+    color: var(--alpus-dark-color);
+    border: 0;
+
+    &,
+    &:hover,
+    &.active,
+    &:focus {
+        background-color: transparent;
+    }
+}
+
+// Button Color Styles
+.btn-primary {
+    @include button-variant(var(--alpus-primary-color), var(--alpus-primary-color-hover));
+}
+
+.btn-secondary {
+    @include button-variant(var(--alpus-secondary-color), var(--alpus-secondary-color-hover));
+}
+
+.btn-success {
+    @include button-variant($success-color, lighten($success-color, 10%));
+}
+
+.btn-warning {
+    @include button-variant($alert-color, lighten($alert-color, 10%));
+}
+
+.btn-danger {
+    @include button-variant($danger-color, lighten($danger-color, 10%));
+}
+
+.btn-dark {
+    @include button-variant(var(--alpus-dark-color), var(--alpus-dark-color-hover));
+}
+
+.btn-white {
+    color: var(--alpus-dark-color);
+    background-color: var(--alpus-white-color);
+    border-color: var(--alpus-white-color);
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: var(--alpus-white-color);
+        border-color: var(--alpus-primary-color);
+        background-color: var(--alpus-primary-color);
+    }
+
+    &.btn-outline {
+        color: var(--alpus-white-color);
+        background-color: transparent;
+        border-color: var(--alpus-white-color);
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: var(--alpus-primary-color);
+            background-color: var(--alpus-white-color);
+        }
+    }
+
+    &.btn-link {
+        color: var(--alpus-white-color);
+        background-color: transparent;
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: var(--alpus-white-color);
+            background-color: transparent;
+        }
+    }
+}
+
+// Gradient Button
+.btn-gradient {
+    position: relative;
+    color: var(--alpus-white-color);
+    background: linear-gradient(135deg, #edf7fa, #cee3ea);
+    border: none;
+    transition: background .25s, color .25s, border .25s;
+    overflow: hidden;
+    vertical-align: middle;
+
+    &:hover,
+    &:focus {
+        color: var(--alpus-white-color);
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: 0%;
+        right: 0%;
+        bottom: -50%;
+        background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 80%);
+        transform: skewX(-45deg) translateX(-100%);
+        transition: transform 0.8s;
+    }
+
+    &:hover::after {
+        transform: skewX(-45deg) translateX(100%);
+    }
+}
+
+.btn-gra-default {
+    color: #222;
+
+    &:hover {
+        color: #222;
+    }
+}
+
+.btn-gra-blue {
+    background: linear-gradient(135deg, #3b8df1, #5449ff);
+}
+
+.btn-gra-orange {
+    background: linear-gradient(135deg, #ffa35f, #e95454);
+}
+
+.btn-gra-pink {
+    background: linear-gradient(135deg, #f85283, #b33c9e);
+}
+
+.btn-gra-green {
+    background: linear-gradient(135deg, #a0ec69, #87cf47);
+}
+
+.btn-gra-dark {
+    background: linear-gradient(135deg, #555555, #222222);
+}
+
+// Button Text Hover Styles
+.btn-text-hover-effect {
+    overflow: hidden;
+
+    span {
+        display: inline-block;
+        position: relative;
+        z-index: 3;
+        transition: opacity .65s, transform .85s;
+
+        &:after {
+            content: attr(data-text);
+            position: absolute;
+            white-space: nowrap;
+            top: 50%;
+            opacity: 0;
+            transition: inherit;
+        }
+    }
+
+    &:hover span:after {
+        opacity: 1;
+    }
+}
+
+.btn {
+    &.btn-text-switch-left {
+        span:after {
+            left: 100%;
+            transform: translate(50%, -50%);
+        }
+
+        &:hover span {
+            transform: translateX(-200%);
+
+            &:after {
+                transform: translate(100%, -50%);
+            }
+        }
+    }
+
+    // &.btn-text-switch-up {
+    //     span:after {
+    //         left: 50%;
+    //         transform: translate(-50%, 100%);
+    //     }
+    //     &:hover span {
+    //         transform: translateY(-200%);
+    //         &:after {
+    //             transform: translate(-50%, 150%);
+    //         }
+    //     }
+    // }
+
+    &.btn-text-marquee-left {
+        span:after {
+            left: 100%;
+            transform: translate(100%, -50%);
+        }
+
+        &:hover span {
+            animation: btnMarqueeLeft 2s linear infinite;
+        }
+    }
+
+    // &.btn-text-marquee-up {
+    //     span:after {
+    //         top: 100%;
+    //         left: 50%;
+    //         transform: translate(-50%, 100%);
+    //     }
+
+    //     &:hover span {
+    //         animation: btnMarqueeUp 1s linear infinite;
+    //     }
+    // }
+
+    // &.btn-text-marquee-down {
+    //     span:after {
+    //         top: -100%;
+    //         left: 50%;
+    //         transform: translate(-50%, -100%);
+    //     }
+
+    //     &:hover span {
+    //         animation: btnMarqueeDown 1s linear infinite;
+    //     }
+    // }
+}
+
+/* Hover Text effects */
+@keyframes btnMarqueeLeft {
+    100% {
+        transform: translateX(-200%);
+    }
+}
+
+// @keyframes btnMarqueeUp {
+//     100% {
+//         transform: translateY(-200%);
+//     }
+// }
+// @keyframes btnMarqueeDown {
+//     100% {
+//         transform: translateY(200%);
+//     }
+// }
+
+
+// 4. Gutenberg Container Widget
+.d-flex {
+    display: flex !important;
+}
+
+.d-inline-flex {
+    display: inline-flex !important;
+}
+
+.text-start {
+    text-align: #{$left} !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-end {
+    text-align: #{$right} !important;
+}
+
+.justify-content-center {
+    justify-content: center !important;
+}
+
+.justify-content-start {
+    justify-content: flex-start !important;
+}
+
+.justify-content-end {
+    justify-content: flex-end !important;
+}
+
+.justify-content-between {
+    justify-content: space-between !important;
+}
+
+.justify-content-around {
+    justify-content: space-around !important;
+}
+
+.align-items-start {
+    align-items: flex-start !important;
+}
+
+.align-items-center {
+    align-items: center !important;
+}
+
+.align-items-end {
+    align-items: flex-end !important;
+}
+
+// Only For Backend
+.alpus-gb-container {
+    &.d-flex {
+        >.block-editor-inner-blocks {
+            width: 100%;
+            justify-content: inherit;
+            align-items: inherit;
+        }
+
+        .block-editor-block-list__layout {
+            display: flex;
+            justify-content: inherit;
+            align-items: inherit;
+            flex-wrap: wrap;
+
+            .wp-block {
+                margin: 0;
+            }
+        }
+
+        .block-list-appender {
+            width: 100%
+        }
+    }
+}
+
+// 5. Gutenberg Image Widget
+.alpus-gb-image {
+    figure {
+        margin: 0;
+    }
+
+    img {
+        border: 0;
+    }
+}
+
+// 6. Post Type Builder
+.editor-styles-wrapper {
+
+    a,
+    ins {
+        text-decoration: none
+    }
+}
+
+.block-editor-block-list__layout .block-editor-block-list__block:not([contenteditable]).is-selected:after {
+    box-shadow: 0 0 0 var(--wp-admin-border-width-focus) var(--wp-admin-theme-color);
+    border-radius: 2px;
+    top: 1px;
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
+}
+
+[data-type="#{$theme-name}-tb/#{$theme-name}-featured-image"] {
+    overflow: hidden;
+}
+
+[data-type="#{$theme-name}-tb/#{$theme-name}-featured-image"] *,
+.wp-block[data-type="#{$theme-name}-tb/#{$theme-name}-featured-image"] .block-editor-block-list__block {
+    position: static
+}
+
+[data-type="#{$theme-name}-tb/#{$theme-name}-featured-image"] .block-editor-block-list__block[data-type^="#{$theme-name}"]:not([contenteditable]).is-selected:after {
+    content: none;
+}
+
+[data-type="#{$theme-name}-tb/#{$theme-name}-featured-image"] .block-editor-block-list__block[data-type^="#{$theme-name}"]:not([contenteditable]).is-selected [class^="#{$theme-name}-"],
+[data-type="#{$theme-name}-tb/#{$theme-name}-featured-image"] .block-editor-block-list__block[data-type^="#{$theme-name}"]:not([contenteditable]).is-selected [class^="tb-"] {
+    outline: var(--wp-admin-border-width-focus) solid var(--wp-admin-theme-color);
+    border-radius: 2px
+}
+
+.wp-block[data-type="#{$theme-name}-tb/#{$theme-name}-featured-image"] .wp-block {
+    margin: 0;
+}
+
+.wp-block[data-type="#{$theme-name}-tb/#{$theme-name}-woo-buttons"] {
+    display: inline-block
+}
+
+
+// Product Label
+.product-label-group {
+    position: absolute;
+    #{$left}: 2rem;
+    top: 2rem;
+    max-width: 11rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.product-label {
+    display: inline-block;
+    margin-bottom: .5rem;
+    padding: .6rem 1rem;
+    font-size: 1.2rem;
+    line-height: 1;
+    color: var(--alpus-white-color);
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 3px;
+
+    &.label-featured {
+        background: var(--alpus-success-color);
+    }
+
+    &.label-new {
+        background: var(--alpus-primary-color);
+    }
+
+    &.label-sale {
+        background: var(--alpus-secondary-color);
+    }
+
+    &.label-stock {
+        background: var(--alpus-light-color);
+    }
+
+    &.label-img {
+        padding: 0;
+    }
+}
+
+// Product Rating
+.woocommerce-product-rating {
+    display: flex;
+    align-items: center;
+    margin-#{$left}: 1px; // issue : need?
+    line-height: 1.1;
+    margin-bottom: .2rem;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    justify-content: flex-start;
+}
+
+.star-rating {
+    display: inline-block;
+    position: relative;
+    font-family: $theme-font;
+    margin-#{$right}: .5rem;
+    letter-spacing: .2em;
+    cursor: pointer;
+
+    &::before {
+        content: "\e986""\e986""\e986""\e986""\e986";
+        color: rgba(0, 0, 0, 0.2);
+    }
+
+    &:hover {
+        .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+
+    span {
+        position: absolute;
+        top: 0;
+        #{$left}: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-align: $left;
+        text-indent: -9999rem;
+
+        &::after {
+            content: "\e986""\e986""\e986""\e986""\e986";
+            text-indent: 0;
+            position: absolute;
+            #{$left}: 0;
+            color: var(--alpus-secondary-color);
+        }
+    }
+
+    .tooltiptext {
+        #{$left}: 50%;
+        top: auto;
+        bottom: 150%;
+        text-indent: 0;
+        overflow: initial;
+        letter-spacing: 0;
+
+        &::after {
+            float: none;
+            content: '';
+            #{$left}: inherit;
+        }
+    }
+
+    +a {
+        margin: 2px 0;
+        // font-size: 1em;
+        line-height: 1.1;
+        color: #aaa;
+        text-transform: capitalize;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &:hover {
+            color: var(--alpus-primary-color);
+        }
+    }
+}
+
+.alpus-tb-featured-image {
+    .slider-wrapper {
+        display: flex;
+        overflow: hidden;
+
+        &>* {
+            width: 100%;
+            flex: 0 0 auto;
+        }
+    }
+
+    .image-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        width: calc(100% + 2 * var(--alpus-gap, 10px));
+        margin-left: calc(-1 * var(--alpus-gap, 10px));
+        margin-right: calc(-1 * var(--alpus-gap, 10px));
+
+        >* {
+            width: 33.3333%;
+            flex: 0 0 auto;
+            padding-left: var(--alpus-gap, 10px);
+            padding-right: var(--alpus-gap, 10px);
+        }
+    }
+}
+
+// Product Price
+.tb-woo-price .price {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: .6rem;
+    font-size: 1.6em;
+    font-weight: 600;
+    letter-spacing: -.05em;
+    color: var(--alpus-dark-color);
+
+    del {
+        color: #aaa;
+        font-weight: 400;
+    }
+
+    ins {
+        margin-#{$right}: 6px;
+        text-decoration: none;
+    }
+}
+
+// 6. Gutenberg Icon Widget
+.alpus-icon {
+    display: inline-block;
+    line-height: 1;
+    transition: .25s;
+
+    i {
+        display: flex;
+        width: 1em;
+        align-items: center;
+        justify-content: center;
+    }
+}

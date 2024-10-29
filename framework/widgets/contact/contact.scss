@@ -1,0 +1,38 @@
+/* -------------------------------------------
+    Contact
+        1. Base Style
+        2. Responsive
+
+---------------------------------------------- */
+
+@import '../../../assets/sass/config';
+@import '../../assets/sass/mixins/direction';
+@import '../../assets/sass/mixins/mixins';
+
+// 1. Base Style
+.contact {
+	display: flex;
+    align-items: center;
+
+    .telephone {
+        display: block;
+    }
+    .contact-delimiter {
+        text-transform: lowercase;
+    }
+    i {
+        transition: color .3s;
+    }
+    svg {
+        width: 1em;
+        height: 1em;
+        transition: fill .3s, stroke .3s;
+    }
+}
+
+// 2. Responsive
+@include mq(lg, max) {
+    .header .contact .contact-content {
+        display: none;
+    }
+}

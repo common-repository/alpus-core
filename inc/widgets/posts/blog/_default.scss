@@ -1,0 +1,113 @@
+// Default
+.post-default {
+
+    &:not(.product) {
+        figure a:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, .25);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .35s, visibility .35s;
+        }
+    }
+
+    .post-media-meta {
+        position: relative;
+
+        .post-meta:first-child {
+            display: none;
+        }
+    }
+
+    .post-details {
+        padding: 3.6rem 3.9rem 3.2rem;
+        background: var(--alpus-change-color-light-1);
+        box-shadow: 0px 10px 20px 0px rgb(0 0 0 / 5%);
+
+        @include mq(xl, max) {
+            padding: 2.7rem 3rem 2.3rem;
+        }
+    }
+
+    .post-cats {
+        font-size: 12px;
+        margin-bottom: 1.2rem;
+
+        @include mq(xl, max) {
+            margin-bottom: 0.7rem;
+        }
+    }
+
+    .post-title {
+        font-size: 1.375em;
+        font-weight: 400;
+        margin-bottom: 2rem;
+        color: var(--alpus-heading-color);
+
+        a:not(:hover) {
+            color: inherit;
+        }
+        
+        @include mq(xl, max) {
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    .post-meta {
+        position: absolute;
+        left: 4rem;
+        right: 4rem;
+        bottom: .7rem;
+        font-size: 14px;
+        color: var(--alpus-white-color);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .35s, visibility .35s;
+
+        .vote-link i,
+        a:before {
+            font-size: 1.286em;
+        }
+
+        @include mq(xl, max) {
+            left: 3rem;
+            right: 3rem;
+            bottom: .3rem;
+        }
+    }
+
+    mark {
+        color: var(--alpus-white-color);
+    }
+
+    .post-date {
+        margin-#{$right}: auto;
+
+        &:before {
+            content: '\e995';
+            display: inline-block;
+            margin-#{$right}: .8rem;
+            vertical-align: middle;
+            font-family: $theme-font;
+            transition: transform .3s;
+        }
+    }
+
+    .vote-link {
+        margin-#{$right}: 1.8rem;
+    }
+
+    &:hover {
+
+        figure a:before,
+        .post-meta {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}

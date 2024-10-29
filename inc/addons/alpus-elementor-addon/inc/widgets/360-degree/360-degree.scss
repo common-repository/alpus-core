@@ -1,0 +1,117 @@
+/* -------------------------------------------
+    360 Degree
+        - Default Style
+---------------------------------------------- */
+
+@import '../../../../../../assets/sass/config';
+@import '../../../../../../assets/sass/direction';
+@import '../../../../../../assets/sass/mixins';
+
+// Default Style
+.alpus-360-gallery-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+    padding: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+
+    .post-div img {
+        margin-bottom: 2rem;
+    }
+
+    .nav_bar {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: 50%;
+        padding: .7rem 1.6rem;
+        bottom: 15px;
+        background: var(--alpus-change-color-light-1);
+        transform: translateX(-50%);
+        z-index: 11;
+
+        a {
+            padding: .75rem;
+            font-size: 0;
+            text-align: center;
+            border: 1px solid transparent;
+            color: var(--alpus-change-color-dark-1);
+
+            &:hover {
+                color: var(--alpus-primary-color);
+            }
+
+            &:before {
+                line-height: 1;
+                font-family: $theme-font;
+                font-size: 1.8rem;
+            }
+        }
+
+        &+.post-div {
+            display: none;
+        }
+
+        > :nth-child(2):before {
+            content: "\e927";
+        }
+
+        .nav_bar_stop:before {
+            content: "\e9ce";
+        }
+
+        .nav_bar_previous:before {
+            content: if_ltr("\e926", "\e928");
+        }
+
+        .nav_bar_next:before {
+            content: if_ltr("\e928", "\e926");
+        }
+    }
+}
+
+.alpus-360-gallery-wrap {
+    position: relative;
+    margin: 0 0 2rem;
+    cursor: ew-resize;
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 7rem;
+        right: 7rem;
+        bottom: 5%;
+        height: 50%;
+        border-color: rgba(170, 170, 170, 0.05) rgba(170, 170, 170, 0.1) rgba(170, 170, 170, 0.15);
+        border-radius: 50%;
+        border-style: solid;
+        border-width: 2px 2px 3px;
+        z-index: 10;
+        transition-delay: 0.5s;
+    }
+
+    img {
+        position: absolute;
+        #{$left}: 0;
+        top: 0;
+    }
+
+    .previous-image {
+        visibility: hidden;
+    }
+
+    .current-image {
+        position: static;
+        visibility: visible;
+    }
+
+    .not_loaded>& img {
+        position: absolute;
+        #{$left}: 0;
+        opacity: 0;
+    }
+}

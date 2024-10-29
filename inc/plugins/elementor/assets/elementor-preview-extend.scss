@@ -1,0 +1,31 @@
+@import '../../../../assets/sass/config';
+@import '../../../../assets/sass/direction';
+
+/*
+ * *************************************** 
+ * Elementor Preview Extend Scss
+ *
+ * 1. Header Builder
+ * 2. Compatibility with Widget
+ * **************************************
+ */
+
+// 1. Header Builder
+body.#{$theme-name}_header_template {
+    .page-wrapper {
+        flex-flow: column;
+    }
+}
+
+body.side-header .header .elementor-preset {
+    width: 50%;
+    max-width: 50%;
+}
+
+// 2. Compatibility with Widget
+.slider-custom-html-dots {
+    .elementor-column>.elementor-widget-wrap>& {
+        z-index: 2;
+        order: 2;
+    }
+}
